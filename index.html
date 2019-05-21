@@ -1,0 +1,135 @@
+<html>
+  <meta charset="utf-8"/>
+  <head>
+    <title>Assignment 3</title>
+    <link rel="stylesheet" href="./stylesheets/mini-default.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <header class="sticky row" style="position: sticky; top: 0px; left: 0px; justify-content: space-between; height: 60px">
+      <div class="col-sm-12" style="justify-content: center; margin: auto">
+        <h1 align="center" style="font-size: 20px">Data of the Department of National Park, Wildlife, and Plant Conservation</h1>
+      </div>
+    </header>
+    <div class="col-sm-12" style="justify-content: center; margin: auto" align="center">
+      <div class="row" id="top-margin" style="height: 60px"></div>
+      <iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vShfR5iT-MAnrYmC_6jNMfVwjcAGDo5eW8VqgaC_ULX9TjUlKDneNrg4c2_E6fqZidli8DVeMylMnqX/pubchart?oid=1539008803&amp;format=interactive"></iframe>
+      <iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vShfR5iT-MAnrYmC_6jNMfVwjcAGDo5eW8VqgaC_ULX9TjUlKDneNrg4c2_E6fqZidli8DVeMylMnqX/pubchart?oid=1733516236&amp;format=interactive"></iframe>
+      <iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vShfR5iT-MAnrYmC_6jNMfVwjcAGDo5eW8VqgaC_ULX9TjUlKDneNrg4c2_E6fqZidli8DVeMylMnqX/pubchart?oid=474654995&amp;format=interactive"></iframe>
+      <iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vShfR5iT-MAnrYmC_6jNMfVwjcAGDo5eW8VqgaC_ULX9TjUlKDneNrg4c2_E6fqZidli8DVeMylMnqX/pubchart?oid=685952631&amp;format=interactive"></iframe>
+    </div>
+    <footer>
+        <label for="modal-control">About</label>
+    </footer>
+
+    <input type="checkbox" id="modal-control" class="modal">
+    <div>
+      <div class="card large">
+        <label for="modal-control" class="modal-close"></label>
+        <h3 class="section">About</h3>
+        <p class="section">
+<b>Website</b> by Suphanath Kaewboonruang - 5810502466<br>
+<b>Data</b> From <a href="http://www.dnp.go.th/statistics/dnpstatmain.asp">Department of National Parks</a><br>
+<!-------------------------------------------------------------------------------------------------------------------------->
+<!-- <b>Original BarChartRace</b> by <a href="https://observablehq.com/@johnburnmurdoch/bar-chart-race">@jburnmurdoch</a> -->
+<!-------------------------------------------------------------------------------------------------------------------------->
+        </p>
+    </div>
+
+
+<!--------------------------------------------------------------------------------------------------------->
+<!--     <script>                                                                                        -->
+<!--       var tickDuration = 80;                                                                        -->
+<!--       var year = 2003;                                                                              -->
+<!--       var isFinished = false;                                                                       -->
+<!--       var isPaused = false;                                                                         -->
+<!--       var incomePlotData = [];                                                                      -->
+<!--       incomeDataFile = d3.csv("./data/income.csv", function(data){                                  -->
+<!--           data.income = +data.income, // convert string to int                                      -->
+<!--           data.year = +data.year,                                                                   -->
+<!--           data.income = isNaN(data.income) ? 0 : data.income,                                       -->
+<!--           data.colour = d3.hsl(Math.random()*360,0.75,0.75)                                         -->
+<!--           //console.log(data);                                                                      -->
+<!--           incomePlotData.push(data);                                                                -->
+<!--       });                                                                                           -->
+<!--                                                                                                     -->
+<!--       incomeDataFile.then(function() {                                                              -->
+<!--           isFinished = true;                                                                        -->
+<!--           console.log(incomePlotData);                                                              -->
+<!--       });                                                                                           -->
+<!--                                                                                                     -->
+<!--       // ** ----- Setting up chart ----- ** //                                                      -->
+<!--       //let barPadding = (height-(margin.bottom+margin.top))/(top_n*5);                             -->
+<!--                                                                                                     -->
+<!--                                                                                                     -->
+<!--       function updateData(targetYear) {                                                             -->
+<!--           yearSlice = incomePlotData.filter(data => data.year == targetYear && !isNaN(data.income)) -->
+<!--               .sort((a, b) => b.income - a.income)                                                  -->
+<!--               .slice(0, total_display);                                                             -->
+<!--                                                                                                     -->
+<!--           yearSlice.forEach((data, index) => {                                                      -->
+<!--               data.rank = index                                                                     -->
+<!--               console.log(data);                                                                    -->
+<!--           });                                                                                       -->
+<!--       };                                                                                            -->
+<!--                                                                                                     -->
+<!--       let ticker = d3.interval(e => {                                                               -->
+<!--           if (isFinished == true) {                                                                 -->
+<!--               year = d3.format('.1f')((+year) + 0.1);                                               -->
+<!--               console.log(year);                                                                    -->
+<!--           }                                                                                         -->
+<!--           updateData(year);                                                                         -->
+<!--           d3.select("#yearText").text(~~year);                                                      -->
+<!--           if(year == 2017)                                                                          -->
+<!--               isPaused = true;                                                                      -->
+<!--           if (isPaused == true)                                                                     -->
+<!--               ticker.stop();                                                                        -->
+<!--       }, tickDuration);                                                                             -->
+<!--       //console.log(incomePlotData);                                                                -->
+<!--       /*                                                                                            -->
+<!--                                                                                                     -->
+<!--                                                                                                     -->
+<!--                                                                                                     -->
+<!--           yearSlice = data.filter(filtered => filtered.year == year && !isNaN(filtered.income))     -->
+<!--               .sort((a, b) => b.income - a.income)                                                  -->
+<!--               .slice(0, total_display);                                                             -->
+<!--                                                                                                     -->
+<!--           yearSlice.forEach((data, index) => data.rank = index);                                    -->
+<!-- */                                                                                                  -->
+<!--                                                                                                     -->
+<!--       var total_display = 10;                                                                       -->
+<!--                                                                                                     -->
+<!--       var svg = d3.select("#income-chart")                                                          -->
+<!--           .append("svg")                                                                            -->
+<!--           .attr("width", 800)                                                                       -->
+<!--           .attr("height", 600)                                                                      -->
+<!--           .style("margin-left", "auto")                                                             -->
+<!--           .style("margin-right", "auto")                                                            -->
+<!--       ;                                                                                             -->
+<!--       svg.append("text")                                                                            -->
+<!--     .attr("x", 400)                                                                                 -->
+<!--     .attr("y", 20)                                                                                  -->
+<!--     .attr("text-anchor", "middle")                                                                  -->
+<!--     .style("font-size", "24px")                                                                     -->
+<!--     .text("Top Earning Resevations");                                                               -->
+<!--                                                                                                     -->
+<!--       svg.append("text")                                                                            -->
+<!--     .attr("x", 400)                                                                                 -->
+<!--     .attr("y", 40)                                                                                  -->
+<!--     .attr("text-anchor", "middle")                                                                  -->
+<!--     .style("font-size", "16px")                                                                     -->
+<!--     .text("Income value, THB");                                                                     -->
+<!--                                                                                                     -->
+<!--       svg.append("text")                                                                            -->
+<!--     .attr("x", 700)                                                                                 -->
+<!--     .attr("y", 550)                                                                                 -->
+<!--     .attr("id", "yearText")                                                                         -->
+<!--     .attr("text-anchor", "middle")                                                                  -->
+<!--     .style('text-anchor', 'end')                                                                    -->
+<!--     .text(~~year);                                                                                  -->
+<!--                                                                                                     -->
+<!--     </script>                                                                                       -->
+<!--------------------------------------------------------------------------------------------------------->
+  </body>
+</html>
